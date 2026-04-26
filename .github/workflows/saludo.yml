@@ -1,5 +1,4 @@
 name: Enviar saludo desde GitHub Actions
-
 on: 
   workflow_dispatch: 
 jobs:
