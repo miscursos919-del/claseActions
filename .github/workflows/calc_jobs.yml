@@ -20,7 +20,7 @@ jobs:
       build
     strategy:
        matrix:
-          operacion: [sumas,restar]
+          operacion: [sumar, restar]
     steps:
        - uses: actions/checkout@v5
        - name: Ejecutar operacion ${{matrix.operacion}}
