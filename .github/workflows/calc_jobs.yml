@@ -1,43 +1,41 @@
 name: Calculadora Secuencial y Paralela
+
 on:
- push: 
-  branches: 
-   -main
+  push:
+    branches:
+      - main
 
 jobs:
-   build:
+  build:
     runs-on: ubuntu-latest
     steps:
-       - uses: actions/checkout@v5
-       - name: Instalar Node.js
-         run: |
-           sudo apt-get update
-           sudo apt-get install -y nodejs npm
+      - uses: actions/checkout@v5
 
-   pruebas-paralelas:
+  pruebas-paralelas:
     runs-on: ubuntu-latest
-    needs: 
-      build
+    needs: build
     strategy:
-       matrix:
-          operacion: [sumar, restar]
+      matrix:
+        operacion: [sumar, restar]
+
     steps:
-       - uses: actions/checkout@v5
-       - name: Ejecutar operacion ${{ matrix.operacion }}
-         run: |
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Ejecutar operacion ${{ matrix.operacion }}
+        run: |
           echo "Creando script para operación..."
           echo "const calc = require('./calculadora'); console.log('Resultado de ${{ matrix.operacion }}:', calc.${{ matrix.operacion }}(5,2));" > test.js
           node test.js
 
-   reporte-final:
+  reporte-final:
     runs-on: ubuntu-latest
-    needs:
-      pruebas-paralelas
+    needs: pruebas-paralelas
     steps:
-      - uses: actions/checkout@v5
       - name: Mostrar mensaje final
         run: echo "Todas las operaciones de la calculadora se ejecutaron correctamente"
-      
-   
    
   
