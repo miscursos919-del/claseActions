@@ -13,6 +13,6 @@ function dividir (a,b){
   return a/b;
 }
 
-module.exports={sumar. restar, multiplicar, dividir};
+module.exports={sumar,restar, multiplicar, dividir};
 
 //modulo construido en  nodejs
