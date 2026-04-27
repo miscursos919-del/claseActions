@@ -23,11 +23,11 @@ jobs:
           operacion: [sumar, restar]
     steps:
        - uses: actions/checkout@v5
-       - name: Ejecutar operacion ${{matrix.operacion}}
+       - name: Ejecutar operacion ${{ matrix.operacion }}
          run: |
-           echo "Creando script para operación..."
-           echo "const calc= require('./calculadora'): console.log('Resultado de ${{matrix.operacion}}')":' calc.${{matrix.operacion}}(5,2));"
-           node test.js
+          echo "Creando script para operación..."
+          echo "const calc = require('./calculadora'); console.log('Resultado de ${{ matrix.operacion }}:', calc.${{ matrix.operacion }}(5,2));" > test.js
+          node test.js
 
    reporte-final:
     runs-on: ubuntu-latest
