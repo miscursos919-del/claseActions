@@ -1,0 +1,19 @@
+#No te olvides de definir la variable OPERACION en settings
+name: Calculadora con Vars
+on: 
+  workflow_dispatch: 
+jobs:
+  calculadora-vars:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Ejecutar operacion usando variable
+        run: |
+          echo "Creando archivo de prueba.."
+          echo "const calc= require ('./calculadora');
+          console.log('Resultado de $OPERACION:', calc[process.env.OPERACION](10,5))" > test.js
+          node test.js
+        env:
+          OPERACION: ${{vars.OPERACION}}
+          
+          
