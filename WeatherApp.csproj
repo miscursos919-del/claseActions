@@ -1,0 +1,9 @@
+<Project $dk="Microsoft.NET.$dk.Web">
+
+<PropertyGroup>
+  <TargetFramework>net9.0</TargetFramework>
+  <Nullble>enable</Nullable>
+  <ImplicitUsings>enable</ImpliciUsings>
+</PropertyGroup>
+
+</Project>
